@@ -122,7 +122,15 @@ void Game::CheckCollision()
 
 	// TODO #6 - If no bricks remain, pause ball and display (render) victory text with R to reset
 
+	if (bricks.empty())
+	{
+		ball.moving = false;
+		Console::SetCursorPosition(WINDOW_WIDTH / 2 - 7, WINDOW_HEIGHT / 2);
+		Console::ForegroundColor(ConsoleColor::Green);
+		std::cout << "You won! press R to reset";
+	}
 
+	
 	if (paddle.Contains(ball.x_position + ball.x_velocity, ball.y_velocity + ball.y_position))
 	{
 		ball.y_velocity *= -1;
